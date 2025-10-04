@@ -19,11 +19,13 @@ ICON_FILE="$ICON_DIR/drata-agent.png"
 # 1. Ensure directories exist
 mkdir -p "$APPDIR" "$DESKTOP_DIR" "$ICON_DIR"
 
-# 2. Move AppImage into place (expects file in current dir or Downloads)
+# 2. Move AppImage into place (expects file in current dir)
+curl https://github.com/drata/agent-releases/releases/latest/download/Drata-agent-linux.AppImage > ./Drata-Agent.AppImage
 if [ -f "./Drata-Agent.AppImage" ]; then
   mv ./Drata-Agent.AppImage "$APPIMG"
-elif [ -f "$HOME/Downloads/Drata-Agent.AppImage" ]; then
-  mv "$HOME/Downloads/Drata-Agent.AppImage" "$APPIMG"
+else
+  echo "Error: Drata-Agent.AppImage not found in current directory."
+  exit 1
 fi
 chmod +x "$APPIMG"
 
