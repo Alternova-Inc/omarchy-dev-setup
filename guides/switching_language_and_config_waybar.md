@@ -4,7 +4,7 @@ This guide walks you through configuring language switching in your Omarchy envi
 
 ####  1. Configure Keyboard Layouts and Language Switch Shortcut
 
-File: `~/.config/hypr/input.conf`
+**File:** `~/.config/hypr/input.conf`
 
 First, we need to tell Hyprland which keyboard layouts you'll use and how to switch between them:
 
@@ -60,7 +60,7 @@ Once created, add it to the visible modules section. Here we place it on the rig
 
 To keep visual consistency with the rest of your modules, adjust its style in Waybar’s CSS file.
 
-File: `~/.config/waybar/style.css`
+**File:** `~/.config/waybar/style.css`
 
 ```css
 #language {
