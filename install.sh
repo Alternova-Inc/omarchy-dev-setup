@@ -4,29 +4,32 @@ sudo -v  # Cache sudo password
 
 echo "🚀 Installing Alternova Development Environment..."
 
-echo "📦 Step 1/7: Updating Packages..."
+echo "📦 Updating Packages..."
 sudo pacman -Syu --noconfirm
 
-echo "🔒 Step 2/7: Installing security packages..."
+echo "🔒 Installing security packages..."
 # Note: Security packages installation command not specified
 
-echo "📥 Step 3/7: Downloading Drata Agent AppImage..."
+echo "📥 Downloading Drata Agent AppImage..."
 bash drata-agent.sh
 
-echo "⚓ Step 4/7: Installing fleet..."
+echo "⚓ Installing fleet..."
 bash fleet.sh
 
-echo "🗑️ Step 5/7: Removing Web Apps..."
+echo "🗑️ Removing Web Apps..."
 bash remove_apps.sh
 
-echo "🛠️ Step 6/7: Installing Yay..."
+echo "Installing Microsoft Teams web app..."
+bash teams.sh
+
+echo "🛠️ Installing Yay..."
 sudo pacman -S --needed --noconfirm git base-devel
 git clone https://aur.archlinux.org/yay.git /tmp/yay
 cd /tmp/yay
 makepkg -si --noconfirm
 cd "$CURRENT_DIRECTORY"
 
-echo "💻 Step 7/7: Installing VSCode..."
+echo "💻 Installing VSCode..."
 yay -S --noconfirm visual-studio-code-bin
 
 echo "🎨 Installing Alternity Theme..."
