@@ -29,6 +29,9 @@ cd /tmp/yay
 makepkg -si --noconfirm
 cd "$CURRENT_DIRECTORY"
 
+echo "🧩 Installing OnlyOffice..."
+bash only-office.sh
+
 echo "💻 Installing VSCode..."
 yay -S --noconfirm visual-studio-code-bin
 
