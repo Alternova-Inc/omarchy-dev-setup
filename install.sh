@@ -32,6 +32,9 @@ cd "$CURRENT_DIRECTORY"
 echo "🧩 Installing OnlyOffice..."
 bash only-office.sh
 
+echo "🧩 Installing Clockify..."
+bash clockify.sh
+
 echo "💻 Installing VSCode..."
 yay -S --noconfirm visual-studio-code-bin
 
