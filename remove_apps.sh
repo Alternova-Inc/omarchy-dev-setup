@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Version
-VERSION="2.0"
+VERSION="2.1"
 
 # Webapps
 # List from: https://github.com/basecamp/omarchy/blob/master/install/packaging/webapps.sh
@@ -47,8 +47,8 @@ remove_web_app_by_name() {
   if [[ -f "$webapp_file_path" ]]; then
     rm -f -- "$webapp_file_path"
     echo "$webapp removed from the system..."
-    else
-      echo "Warning: $webapp_file_path not found. Skipping..."
+  else
+    echo "Warning: $webapp_file_path not found. Skipping..."
   fi
 }
 
@@ -60,19 +60,27 @@ main() {
 =========================================================
 '
 
- readarray -t installed_webapps < <(get_installed_webapps)
-    
- if (( ${#installed_webapps[@]} == 0 )); then
-   echo "System: The user already has uninstalled the webapps"
+  readarray -t installed_webapps < <(get_installed_webapps)
+
+  if (( ${#installed_webapps[@]} == 0 )); then
+    echo "System: The user already has uninstalled the webapps"
   else
     echo "System: user has the next apps installed: ${installed_webapps[*]}"
- fi
+    for webapp in "${installed_webapps[@]}"; do
+      remove_web_app_by_name "$webapp"
+    done
+  fi
 
- for webapp in "${installed_webapps[@]}";do
-   remove_web_app_by_name "$webapp"
- done
+  echo '
+---------------------------------------------------------
+        Removing bundled desktop apps (Omarchy)
+---------------------------------------------------------
+'
+  bash remove_signal.sh || true
+  bash remove_typora.sh || true
+  bash remove_libreoffice.sh || true
 
- echo '
+  echo '
 =========================================================
                 End Script to Remove Web Apps
 =========================================================
