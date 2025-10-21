@@ -10,6 +10,9 @@ sudo pacman -Syu --noconfirm
 echo "🔒 Installing security packages..."
 # Note: Security packages installation command not specified
 
+echo "📦 Installing Flatpak..."
+bash flatpack.sh
+
 echo "📥 Downloading Drata Agent AppImage..."
 bash drata-agent.sh
 
